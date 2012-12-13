@@ -1,5 +1,5 @@
 require "dslblock/version"
-require "dslblock/universal_item"
+require "dslblock/dslblock"
 
 module Dslblock
 end
