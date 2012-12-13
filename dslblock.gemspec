@@ -18,8 +18,8 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   
   
-  %w{ activesupport }.each do |gem|
-    s.add_dependency gem, ['>= 3.0.0']
+  %w{ activesupport }.each do |dep|
+    gem.add_dependency dep, ['>= 3.0.0']
   end
   
 end
