@@ -1,3 +1,3 @@
-module Dslblock
+module DSLBlock
   VERSION = "0.0.1"
 end

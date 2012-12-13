@@ -1,5 +1,5 @@
 require "dslblock/version"
+require "dslblock/main"
 
-module Dslblock
-  # Your code goes here...
+module DSLBlock
 end
