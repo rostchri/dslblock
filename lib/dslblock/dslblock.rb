@@ -11,6 +11,7 @@ module DSLBlock
     def initialize(options={},&block)
       # set some default options
       options = options.reverse_merge :id => rand.to_s.split('.').last # generate random-id if no id is given
+      
       # set some instance-variables according to option-values
       set :id           => options.delete(:id),
           :options      => options,
@@ -48,6 +49,15 @@ module DSLBlock
         self.send("#{options}=", yield) if block_given? && options.is_a?(Symbol) # set instance-variable to evaluated block if block is given and option is a symbol
       end
       nil
+    end
+    
+    # allows to access all options via method-function
+    def method_missing(sym, *args)
+      if sym.to_s =~ /\A(.*)\?\z/ && options.include?($1) && (options[$1].is_a? TrueClass || options[$1].is_a? FalseClass) 
+        options[$1]
+      else
+        false
+      end
     end
 
     def to_s(opts={})
