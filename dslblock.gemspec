@@ -5,7 +5,7 @@ require 'dslblock/version'
 
 Gem::Specification.new do |gem|
   gem.name          = "dslblock"
-  gem.version       = DSLBlock::VERSION
+  gem.version       = Dslblock::VERSION
   gem.authors       = ["Christian Rost"]
   gem.email         = ["chr@baltic-online.de"]
   gem.description   = %q{Helper-Class for creating universal DSL blocks}

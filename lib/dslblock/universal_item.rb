@@ -1,7 +1,7 @@
 require 'active_support/core_ext' # needed for reverse_merge
 
 
-module DSLBlock
+module Dslblock
   
   # To be able to use DSL-Syntax when defining objects the class UniversalItem is used as base-class for all kind of classes
   class UniversalItem
