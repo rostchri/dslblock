@@ -51,7 +51,7 @@ module DSLBlock
     end
 
     def to_s(opts={})
-      res = "#{self.class.name}: ##{id} title: #{title} depth: #{depth} options: #{options}"
+      res = "#{self.class.name}: ##{id} depth: #{depth} options: #{options}"
       res
     end
   end
