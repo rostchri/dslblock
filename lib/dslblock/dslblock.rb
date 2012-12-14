@@ -22,7 +22,7 @@ module DSLBlock
         # based on the number of arguments for the block passed in
         # if no arguments to the block are given instance_eval &block is used
         block.arity == 1 ? yield(self) : instance_eval(&block)
-      end if block_given?
+      end if block_given? && !options[:custom_block]
     end
     
     # Thread and exception-safe tracking of block-depth (http://www.alfajango.com/blog/counting-block-nesting-depth-in-ruby/)
@@ -53,8 +53,10 @@ module DSLBlock
     
     # allows to access all options via method-function
     def method_missing(sym, *args)
-      if sym.to_s =~ /\A(.*)\?\z/ && options.include?($1) && (options[$1].is_a? TrueClass || options[$1].is_a? FalseClass) 
-        options[$1]
+      if sym.to_s =~ /\A(.*)\?\z/ && options.include?($1.to_sym) && (options[$1.to_sym].is_a?(TrueClass) || options[$1.to_sym].is_a?(FalseClass))
+        options[$1.to_sym]
+      elsif sym.to_s =~ /\A(.*)\z/ && options.include?($1.to_sym) 
+        options[$1.to_sym]
       else
         false
       end
